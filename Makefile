@@ -1,8 +1,6 @@
 NAME	= program
 
-CC	= gcc
 
-RM	= rm -f
 
 SRCS	= ./get_next_line.c \
 	  ./libft/ft_atoi.c \
@@ -64,22 +62,23 @@ SRCS	= ./get_next_line.c \
 	  ./libft/ft_tolower.c \
 	  ./libft/ft_toupper.c 
 
-OBJS	= $(SRCS:.c=.o)
 
-CFLAGS = -I ./
-CFLAGS += -Wall -Wextra
+CC	= gcc -Wall -Wextra -I ./
+
+OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	 $(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+	 @$(CC) $(OBJS) -o $(NAME)
+	 @echo "No pb"
 
 clean:
-	$(RM) $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all
