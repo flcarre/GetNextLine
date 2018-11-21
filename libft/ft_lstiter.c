@@ -6,17 +6,17 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 17:38:56 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/09 11:26:29 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 13:45:13 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-		if (lst && (*f))
+	if (lst && (*f))
 	{
-		while(lst)
+		while (lst)
 		{
 			f(lst);
 			lst = lst->next;

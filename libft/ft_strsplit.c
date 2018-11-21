@@ -6,25 +6,13 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 17:38:56 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/09 11:41:09 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 17:51:32 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		size_wd(char *str, int i, char c)
-{
-	int n;
-
-	n = 0;
-	while (str[i] != '\0' && str[i] == c)
-		i++;
-	while (str[i + n] != '\0' && str[i + n] != c)
-		n++;
-	return (n);
-}
-
-static int		word_count(char *str, char c)
+static int		word_count(char const *str, char c)
 {
 	int i;
 	int n;
@@ -42,35 +30,53 @@ static int		word_count(char *str, char c)
 	return (n + 1);
 }
 
-char	**ft_strsplit(char *str, char c)
+static	char	*ft_add(char *str, char c)
 {
-	int			i;
-	int			j;
-	unsigned int			n;
-	char		**tab;
+	int		i;
+	int		k;
+	char	*word;
 
 	i = 0;
-	j = 0;
-	n = 0;
-	if (!str)
-		return(NULL);
-	if ((tab = malloc(word_count(str, c) * sizeof(char*))) == NULL)
-		return(NULL);
-	while (n < ft_strlen(str))
+	k = 0;
+	while (str[k] && str[k] != c)
+		k++;
+	word = malloc(sizeof(char) * k + 1);
+	if (word == NULL)
+		return (NULL);
+	while (str[i] && str[i] != c)
 	{
-		while (str[n] == c)
-			n++;
-		if ((tab[i] = malloc((size_wd(str, n, c)) * sizeof(char))) == NULL)
-			return(NULL);
-		while (str[n] != c && str[n])
-			tab[i][j++] = str[n++];
-		if (tab[i][0] != 0 && tab[i][0] != 1)
+		word[i] = str[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	int		i;
+	int		k;
+	char	**tab;
+
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	k = word_count((char*)s, c);
+	tab = malloc(sizeof(char*) * k + 1);
+	if (tab == NULL)
+		return (NULL);
+	while (*s)
+	{
+		if (*s && *s == c)
+			s++;
+		if (*s && *s != c)
 		{
-			tab[i][j] = '\0';
+			tab[i] = ft_add((char*)s, c);
 			i++;
-			j = 0;
+			while (*s && *s != c)
+				s++;
 		}
 	}
-	tab[i] = 0;
+	tab[i] = NULL;
 	return (tab);
 }

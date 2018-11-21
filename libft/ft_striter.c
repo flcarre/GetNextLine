@@ -6,27 +6,27 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 17:38:56 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/09 13:39:20 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:13:32 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striter(char *str, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
 	int n;
-	int s;
+	int l;
 
 	n = 0;
-	s = 0;
-	if (str && *f)
+	l = 0;
+	if (s && *f)
 	{
-		s = ft_strlen(str);
-		while(s)
+		l = ft_strlen(s);
+		while (l)
 		{
-			f(&str[n]);
+			f(&s[n]);
 			n++;
-			s--;
+			l--;
 		}
 	}
 }

@@ -6,10 +6,13 @@
 #    By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/23 16:03:09 by flcarre           #+#    #+#              #
-#    Updated: 2018/11/09 11:22:27 by flcarre          ###   ########.fr        #
+#    Updated: 2018/11/14 15:14:35 by flcarre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+PP='\033[0;35m'
 NAME = libft.a
 SRCS =	./ft_atoi.c			\
 		./ft_bzero.c		\
@@ -43,52 +46,53 @@ SRCS =	./ft_atoi.c			\
 		./ft_strchr.c		\
 		./ft_strrchr.c		\
 		./ft_memdel.c		\
+		./ft_strclr.c		\
 		./ft_strnew.c		\
 		./ft_strdel.c		\
-		./ft_strclr.c		\
-		./ft_striter.c		\
 		./ft_striteri.c		\
 		./ft_strmap.c		\
+		./ft_striter.c		\
+		./ft_strmap.c		\
 		./ft_strmapi.c		\
-		./ft_strequ.c		\
 		./ft_strnequ.c		\
 		./ft_strsub.c		\
+		./ft_putchar_fd.c	\
+		./ft_strequ.c		\
 		./ft_strjoin.c		\
 		./ft_strtrim.c		\
 		./ft_itoa.c			\
-		./ft_putnbr.c		\
-		./ft_putchar_fd.c	\
 		./ft_putstr_fd.c	\
+		./ft_putnbr.c		\
+		./ft_lstdelone.c	\
 		./ft_putnbr_fd.c	\
 		./ft_putendl_fd.c	\
 		./ft_putendl.c		\
 		./ft_strsplit.c		\
 		./ft_lstnew.c			\
 		./ft_lstdel.c		\
-		./ft_lstdelone.c	\
 		./ft_lstadd.c		\
 		./ft_lstiter.c		\
 		./ft_lstmap.c
 
 OBJ = $(SRCS:.c=.o)
-CC = gcc -Wall -Werror -Wextra -I ./
+CC = gcc -Wall -Werror -Wextra -I ./includes
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		echo "GENERATE LIBRARY"
-		$(CC) -c $(SRCS)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
-		 echo "LIBRARY CREATED !"
+		@echo	"${GREEN}GENERATE LIBRARY"
+		@$(CC) -c $(SRCS)
+		@ar rc $(NAME) $(OBJ)
+		@ranlib $(NAME)
+		@echo	"${GREEN}LIBRARY CREATED !"
 
 clean:
-		echo "CLEANING OBJECTS FILES"
-		rm -rf $(OBJ)
+		@echo	"${RED}CLEANING OBJECTS FILES${PP}"
+		@rm -rf $(OBJ)
 
 fclean: clean
-	    echo "RESETING ALL"
-		rm -rf $(NAME)
+	  @echo "RESETING ALL"
+		@rm -rf $(NAME)
 
 re: fclean all
 

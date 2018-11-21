@@ -6,7 +6,7 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:14:10 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 14:14:26 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:08:29 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return(c - 32);
-	return(c);
+		return (c - 32);
+	return (c);
 }

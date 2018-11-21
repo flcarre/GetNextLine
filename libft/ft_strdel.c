@@ -6,13 +6,13 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 17:38:56 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 15:26:29 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 13:58:01 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_strdel(char **as)
+void	ft_strdel(char **as)
 {
 	if (as)
 	{

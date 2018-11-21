@@ -6,19 +6,19 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 11:01:38 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 14:41:44 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 09:53:08 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char *str)
+void	ft_putendl(char const *s)
 {
 	char n;
 
 	n = '\n';
-	if (!str)
+	if (!s)
 		return ;
-	write(1, str, ft_strlen(str));
+	write(1, s, ft_strlen(s));
 	write(1, &n, 1);
 }

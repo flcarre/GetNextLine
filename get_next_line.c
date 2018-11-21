@@ -10,53 +10,63 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_next_line.h>
+#include "get_next_line.h"
 
-char	*ft_full_str(int fd)
+static int     ft_cut_str(char **str, char **line)
 {
-	int		i;
-	int end;
-	char* buff[BUFF_SIZE];
-	char *str;
+    unsigned long i;
+    char *tmp;
 
-	str = malloc(BUFF_SIZE - 1 * sizeof(char));
-	i = 0;
-	if ((end = read(fd, buff, BUFF_SIZE)) == -1)
-		return (-1);
-	str = ft_strjoin(str, buff);
-	while(end = read(fd, &buff, BUFF_SIZE))
-	{
-		i++;
-		str = ft_strjoin(str, buff);
-	}
-	str[BUFF_SIZE * i] = 0;
-	close(fd);
-	return(str);
+    i = 0;
+    while((*str)[i] && (*str)[i] != '\n')
+        i++;
+    *line = ft_strsub(*str, 0, i);
+    i += ((*str)[i] == '\n') ? 1 : 0;
+    tmp = *str;
+    *str = ft_strdup((*str) + i);
+    free(tmp);
+    return(1);
 }
 
 int get_next_line(const int fd, char **line)
 {
-	char **file;
-	char *str;
-	static int i;
-    if (i == 0)
-	    file = ft_strsplit(ft_full_str(fd), '\n');
-	if (file[i] == NULL)
-	    return(0);
-	printf("i = %d %s\n",i, file[i]);
-	i++;
+	long    end;
+   	char    buff[BUFF_SIZE + 1];
+   	static char    *str = NULL;
+   	char    *s;
+
+    if (fd < 0 || !line)
+        return(-1);
+   	while((end = read(fd, &buff, BUFF_SIZE)) > 0)
+   	{
+   		buff[end] = 0;
+   		s = str;
+   		str = ft_strjoin(str, buff);
+   		if (s)
+   		    free(s);
+   		if (ft_strchr(str, '\n'))
+   		    return(ft_cut_str(&str, line));
+    }
+    if (ft_strlen(str))
+       return(ft_cut_str(&str, line));
+    return(end < 0 ? -1 : 0);
 }
 
-
+/*
 int main(int argc, char const *argv[]) {
 	int fd = open(argv[1], O_RDONLY);
-	char **file;
+	char *file = NULL;
 	int i;
+	argc = 0;
 	i = 0;
 	while(i < 3)
 	{
 	    get_next_line(fd, &file);
+	    ft_putstr(file);
+	    ft_putstr("\n");
 	    i++;
 	}
+	close(fd);
 	return 0;
 }
+*/

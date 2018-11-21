@@ -6,27 +6,27 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 17:38:56 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 16:16:59 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 14:11:54 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int n;
-	char *ret;
+	int		n;
+	char	*ret;
 
 	n = 0;
-	if (str)
-		ret = ft_strdup(str);
-	if (str && f && ret)
+	if (s)
+		ret = ft_strdup(s);
+	if (s && f && ret)
 	{
-		while(str[n])
+		while (s[n])
 		{
 			ret[n] = f(n, ret[n]);
 			n++;
 		}
 	}
-	return(ret);
+	return (ret);
 }

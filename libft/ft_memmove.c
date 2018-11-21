@@ -6,14 +6,14 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:11:21 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/08 16:09:28 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 13:51:16 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-void *ft_memmove(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	char	*srcc;
 	char	*dstc;

@@ -6,20 +6,19 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:10:13 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 14:10:14 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 13:52:28 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-
-void ft_bzero(void *b, size_t n)
+void	ft_bzero(void *b, size_t n)
 {
 	char *str;
 
 	str = b;
-	while(n)
+	while (n)
 	{
 		*str++ = 0;
 		n--;

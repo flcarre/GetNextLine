@@ -6,13 +6,13 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 17:38:56 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/09 11:07:29 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 13:44:20 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd(t_list **alst, t_list *new)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
 	if (new)
 	{

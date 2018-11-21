@@ -6,7 +6,7 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:11:04 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 14:11:11 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/14 13:49:35 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 		c2++;
 		n--;
 	}
-		return(0);
+	return (0);
 }
