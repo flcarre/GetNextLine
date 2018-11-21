@@ -35,18 +35,16 @@ int get_next_line(const int fd, char **line)
    	static char    *str = NULL;
    	char    *s;
 
-    if (fd < 0 || !line)
+    s = NULL;
+    if (fd < 0 || !line || (end = read(fd, &buff, BUFF_SIZE)) == -1)
         return(-1);
-   	while((end = read(fd, &buff, BUFF_SIZE)) > 0)
-   	{
-   		buff[end] = 0;
-   		s = str;
-   		str = ft_strjoin(str, buff);
-   		if (s)
-   		    free(s);
-   		if (ft_strchr(str, '\n'))
-   		    return(ft_cut_str(&str, line));
-    }
+    buff[end] = 0;
+    s = str;
+    str = ft_strjoin(str, buff);
+    if (s)
+        free(s);
+    if (ft_strchr(str, '\n'))
+        return(ft_cut_str(&str, line));
     if (ft_strlen(str))
        return(ft_cut_str(&str, line));
     return(end < 0 ? -1 : 0);
@@ -61,12 +59,12 @@ int main(int argc, char const *argv[]) {
 	i = 0;
 	while(i < 3)
 	{
+
 	    get_next_line(fd, &file);
 	    ft_putstr(file);
 	    ft_putstr("\n");
 	    i++;
 	}
-	close(fd);
 	return 0;
 }
 */
