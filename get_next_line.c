@@ -21,10 +21,15 @@ static int     ft_cut_str(char **str, char **line)
     while((*str)[i] && (*str)[i] != '\n')
         i++;
     *line = ft_strsub(*str, 0, i);
+    if (line == NULL)
+        return (-1);
     i += ((*str)[i] == '\n') ? 1 : 0;
     tmp = *str;
     *str = ft_strdup((*str) + i);
     free(tmp);
+    //printf("%s\n", str);
+    if (*str == NULL)
+        return (-1);
     return(1);
 }
 
@@ -36,15 +41,18 @@ int get_next_line(const int fd, char **line)
    	char    *s;
 
     s = NULL;
-    if (fd < 0 || !line || (end = read(fd, &buff, BUFF_SIZE)) == -1)
+    if (fd < 0 || !line)
         return(-1);
-    buff[end] = 0;
-    s = str;
-    str = ft_strjoin(str, buff);
-    if (s)
-        free(s);
-    if (ft_strchr(str, '\n'))
-        return(ft_cut_str(&str, line));
+    while ((end = read(fd, &buff, BUFF_SIZE)) > 0)
+    {
+        buff[end] = 0;
+        s = str;
+        str = ft_strjoin(str, buff);
+        if (s)
+            free(s);
+        if (ft_strchr(str, '\n'))
+            return(ft_cut_str(&str, line));
+    }
     if (ft_strlen(str))
        return(ft_cut_str(&str, line));
     return(end < 0 ? -1 : 0);
@@ -59,12 +67,33 @@ int main(int argc, char const *argv[]) {
 	i = 0;
 	while(i < 3)
 	{
-
-	    get_next_line(fd, &file);
+	    get_next_line(0, &file);
 	    ft_putstr(file);
 	    ft_putstr("\n");
 	    i++;
+	    free(file);
+	    file = NULL;
 	}
 	return 0;
 }
-*/
+
+
+
+
+
+
+
+
+
+
+
+   while ((end = read(fd, &buff, BUFF_SIZE)) > 0)
+    {
+        buff[end] = 0;
+        s = str;
+        str = ft_strjoin(str, buff);
+        if (s)
+            free(s);
+        if (ft_strchr(str, '\n'))
+            return(ft_cut_str(&str, line));
+    }*/
