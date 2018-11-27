@@ -6,13 +6,13 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 16:07:38 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/07 14:14:49 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/22 10:38:06 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, int nb)
+char	*ft_strncat(char *dest, const char *src, int nb)
 {
 	int		i;
 	int		n;
