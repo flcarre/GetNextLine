@@ -43,3 +43,45 @@ raajkzdzedlm,ezkdnlkzeezjmlezklmez
 
 
 end OF file.
+
+
+
+/*
+int main(int argc, char const *argv[]) {
+	int fd = open(argv[1], O_RDONLY);
+	char *file = NULL;
+	int i;
+	argc = 0;
+	i = 0;
+	while(get_next_line(fd, &file))
+	{
+
+	    ft_putstr(file);
+	    ft_putstr("\n");
+	    i++;
+	    free(file);
+	    file = NULL;
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+   while ((end = read(fd, &buff, BUFF_SIZE)) > 0)
+    {
+        buff[end] = 0;
+        s = str;
+        str = ft_strjoin(str, buff);
+        if (s)
+            free(s);
+        if (ft_strchr(str, '\n'))
+            return(ft_cut_str(&str, line));
+    }*/

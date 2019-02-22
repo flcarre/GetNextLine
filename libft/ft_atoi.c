@@ -6,13 +6,15 @@
 /*   By: flcarre <flcarre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/03 02:02:23 by flcarre           #+#    #+#             */
-/*   Updated: 2018/11/14 13:41:56 by flcarre          ###   ########.fr       */
+/*   Updated: 2018/11/22 14:15:44 by flcarre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_atoi(char *str)
+
+int	ft_atoi(const char *str)
 {
 	int i;
 	int nb;
@@ -38,4 +40,14 @@ int	ft_atoi(char *str)
 		return (nb == -469762049 ? 0 : -nb);
 	else
 		return (nb == -469762049 ? -1 : nb);
+}
+
+int		main()
+{
+	char *str;
+
+	str = "--12345";
+	printf("%d\n", atoi(str));
+	printf("%d\n", ft_atoi(str));
+	return (0);
 }
